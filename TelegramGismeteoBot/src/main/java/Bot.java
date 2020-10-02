@@ -26,7 +26,7 @@ public class Bot extends TelegramLongPollingBot {
         sendMessage.setReplyToMessageId(message.getMessageId());
         sendMessage.setText(text);
         try {
-            sendMessage(sendMessage);
+            execute(sendMessage);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
@@ -34,6 +34,8 @@ public class Bot extends TelegramLongPollingBot {
 
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
+
+        SendMessage sendMessage = new SendMessage();
         if (message != null && message.hasText()){
             switch (message.getText()){
                 case "/help":
@@ -55,10 +57,10 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     public String getBotUsername() {
-        return "GismeteoBot";
+        return "sosiolegbot";
     }
 
     public String getBotToken() {
-        return "1374545200:AAHmsOKjWjyNrNGt_Us0CsYfmC1Vd8Mk4LE";
+        return "1013041892:AAGfE0SnBQ1XPpcaaOLSmcdX0xYcSfxbArE";
     }
 }
