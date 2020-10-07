@@ -55,9 +55,10 @@ public class Bot extends TelegramLongPollingBot { //Необходимо уна�
         if (message != null && message.hasText()){
             switch (message.getText()){
                 case "/start":
-                    sendMsg(message,"Привет\nЯ бот Олега\n");
+                    sendMsg(message, "Привет!\nЯ бот Олега\nВ данный момент бот честно спизжен, но вроде работает.");
+                    sendMsg(message, "Доступные команды (/help, /settings, Ты пидор)\nТак-же можешь написать любой город для получения прогноза погоды.");
                     break;
-                case "Help":
+                case "/help":
                      sendMsg(message,"Чем могу помочь?");
                     break;
                 case "/settings":
@@ -65,7 +66,10 @@ public class Bot extends TelegramLongPollingBot { //Необходимо уна�
                     break;
                 default:
                     try {
-                        sendMsg(message, Weather.getWeather(message.getText(), model));
+                        if (message.equals("Погода")) {
+                            System.out.println("тут?");
+                            sendMsg(message, Weather.getWeather(message.getText(), model));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
